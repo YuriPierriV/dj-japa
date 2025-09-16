@@ -16,19 +16,19 @@ const notoSansJP = Noto_Sans_JP({
 });
 
 export const metadata: Metadata = {
-  title: "DJ Japa | Transforme seu evento em uma experiência inesquecível",
-  description: "DJ profissional especializado em casamentos, eventos corporativos, festas particulares e formaturas. Som de qualidade, equipamentos modernos e 15+ anos de experiência. Atendimento em São Paulo e região.",
+  title: "DJ Japa | O DJ que transforma seu evento em Brasília",
+  description: "DJ profissional de Brasília com 15+ anos de experiência. Casamentos, festas particulares, eventos corporativos e formaturas. Som de qualidade, equipamentos modernos e energia inesquecível.",
   keywords: [
     "DJ Brasília",
-    "DJ casamento",
-    "DJ festa",
-    "DJ evento corporativo",
-    "DJ formatura",
-    "som profissional",
-    "equipamento de som",
-    "festa SP",
-    "DJ japonês",
-    "evento inesquecível"
+    "DJ casamento Brasília",
+    "DJ festa Brasília",
+    "DJ evento corporativo Brasília",
+    "DJ formatura Brasília",
+    "som profissional Brasília",
+    "equipamento de som Brasília",
+    "DJ japonês Brasília",
+    "DJ para eventos Brasília",
+    "música para casamento Brasília"
   ],
   authors: [{ name: "DJ Japa" }],
   creator: "DJ Japa",
@@ -38,21 +38,21 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL('https://djjapa.com'),
+  metadataBase: new URL('https://djjapa.com.br'),
   alternates: {
     canonical: '/',
   },
   openGraph: {
-    title: "DJ Japa | Transforme seu evento em uma experiência inesquecível",
-    description: "DJ profissional com 15+ anos de experiência. Som de qualidade, equipamentos modernos e energia garantida para seu evento.",
-    url: 'https://djjapa.com',
+    title: "DJ Japa | O DJ que transforma seu evento em Brasília",
+    description: "DJ de Brasília com mais de 15 anos de experiência. Casamentos, festas e eventos corporativos com energia e som de qualidade.",
+    url: 'https://djjapa.com.br',
     siteName: 'DJ Japa',
     images: [
       {
         url: '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'DJ Japa - Experiência musical inesquecível',
+        alt: 'DJ Japa em Brasília - Experiência musical inesquecível',
       },
     ],
     locale: 'pt_BR',
@@ -60,8 +60,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: "DJ Japa | Transforme seu evento em uma experiência inesquecível",
-    description: "DJ profissional com 15+ anos de experiência. Som de qualidade e energia garantida!",
+    title: "DJ Japa | O DJ que transforma seu evento em Brasília",
+    description: "DJ em Brasília com 15+ anos de experiência. Som de qualidade, energia garantida e momentos inesquecíveis.",
     images: ['/og-image.jpg'],
   },
   robots: {
@@ -76,9 +76,10 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: 'your-google-verification-code',
+    google: 'seu-codigo-de-verificacao-google',
   },
 };
+
 
 export default function RootLayout({
   children,
