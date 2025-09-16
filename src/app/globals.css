@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* Efeito glow/led para títulos HeroSection */
 .led-glow {
   text-shadow:
@@ -18,9 +22,7 @@
 .animate-glow {
   animation: glow 2.8s ease-in-out infinite;
 }
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap');
 
