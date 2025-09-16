@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Noto_Sans_JP } from "next/font/google";
 import "./globals.css";
 
+
 const inter = Inter({ 
   subsets: ["latin"],
   variable: "--font-inter",
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
   title: "DJ Japa | Transforme seu evento em uma experiência inesquecível",
   description: "DJ profissional especializado em casamentos, eventos corporativos, festas particulares e formaturas. Som de qualidade, equipamentos modernos e 15+ anos de experiência. Atendimento em São Paulo e região.",
   keywords: [
-    "DJ São Paulo",
+    "DJ Brasília",
     "DJ casamento",
     "DJ festa",
     "DJ evento corporativo",
