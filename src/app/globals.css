@@ -1,0 +1,134 @@
+/* Efeito glow/led para títulos HeroSection */
+.led-glow {
+  text-shadow:
+    0 0 12px #10D7FF,
+    0 0 24px #C77DFF,
+    0 0 32px #FF10F0,
+    0 0 48px #10D7FF80;
+}
+
+@keyframes glow {
+  0%, 100% {
+    filter: drop-shadow(0 0 16px #10D7FF) drop-shadow(0 0 32px #C77DFF80);
+  }
+  50% {
+    filter: drop-shadow(0 0 32px #10D7FF) drop-shadow(0 0 48px #FF10F080);
+  }
+}
+.animate-glow {
+  animation: glow 2.8s ease-in-out infinite;
+}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-japan-dark text-japan-white font-sans;
+    background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+    min-height: 100vh;
+  }
+  
+  /* Efeitos japoneses modernos */
+  .japanese-glow {
+    text-shadow: 0 0 10px rgba(16, 215, 255, 0.5);
+  }
+  
+  .neon-border {
+    border: 1px solid rgba(16, 215, 255, 0.3);
+    box-shadow: 0 0 10px rgba(16, 215, 255, 0.2);
+  }
+  
+  .glass-effect {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Scroll suave */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Customização da scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #1E293B;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(45deg, #10D7FF, #C77DFF);
+    border-radius: 3px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(45deg, #06B6D4, #A855F7);
+  }
+}
+
+@layer components {
+  .btn-neon {
+    @apply relative px-8 py-4 bg-transparent border-2 border-neon-blue text-neon-blue font-semibold transition-all duration-300 hover:bg-neon-blue hover:text-japan-dark hover:shadow-lg;
+    box-shadow: 0 0 20px rgba(16, 215, 255, 0.3);
+  }
+  
+  .btn-neon:hover {
+    box-shadow: 0 0 30px rgba(16, 215, 255, 0.6);
+    transform: translateY(-2px);
+  }
+  
+  .card-japan {
+    @apply glass-effect rounded-lg p-6 transition-all duration-300 hover:scale-105;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .card-japan:hover {
+    box-shadow: 0 10px 30px rgba(16, 215, 255, 0.2);
+  }
+  
+  .gradient-text {
+    background: linear-gradient(45deg, #10D7FF, #C77DFF, #FF10F0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .section-padding {
+    @apply px-4 sm:px-6 lg:px-8 py-16 lg:py-24;
+  }
+}
+
+
