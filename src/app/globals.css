@@ -2,6 +2,56 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Swiper Gallery Styles */
+.gallery-swiper .swiper-pagination {
+  bottom: 0 !important;
+}
+
+.gallery-swiper .swiper-pagination-bullet {
+  @apply bg-neon-blue/30 w-2 h-2;
+}
+
+.gallery-swiper .swiper-pagination-bullet-active {
+  @apply bg-neon-blue w-3 h-2 rounded-full;
+}
+
+.gallery-swiper .swiper-slide {
+  height: auto;
+}
+
+/* Floating WhatsApp Styles */
+.floating-whatsapp {
+  z-index: 9999;
+}
+
+/* Garantir que o botão não interfira com outros elementos */
+@media (max-width: 768px) {
+  .floating-whatsapp {
+    bottom: 1rem !important;
+    right: 1rem !important;
+  }
+}
+
+/* Animação personalizada do WhatsApp */
+@keyframes whatsapp-pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+  }
+  70% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 10px rgba(37, 211, 102, 0);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+  }
+}
+
+.whatsapp-pulse {
+  animation: whatsapp-pulse 2s infinite;
+}
+
 /* Efeito glow/led para títulos HeroSection */
 .led-glow {
   text-shadow:

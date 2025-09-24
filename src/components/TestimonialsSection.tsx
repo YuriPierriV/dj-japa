@@ -10,14 +10,12 @@ const depoimentos = [
 Pode ter certeza que todos os meus eventos serão com ele , prometeu e entregou tudo ♥️ Indico 100 milhões de vezes
 Obrigada por todo comprometimento você é nota mil 🥹💥`,
     rating: 5,
-    avatar: '👰‍♀️🤵‍♂️',
     destaque: 'Casamento dos sonhos realizado!'
   },
   {
     nome: 'Priscila Oliveira',
     texto: 'DJ Japa é excepcional, extremamente profissional e sabe como deixar a pista de dança de qualquer evento animada. Para o cerimonial organizar um evento tendo como DJ o JAPA é maravilhoso, pois o trabalho deste profissional interfere no resultado do evento.',
     rating: 5,
-    avatar: '🎉',
     destaque: 'Sabe como deixar a pista de dança de qualquer evento animada'
   },
   {
@@ -25,17 +23,27 @@ Obrigada por todo comprometimento você é nota mil 🥹💥`,
     evento: 'Evento Corporativo',
     texto: 'Simplesmente o melhor! Faz set list de acordo com o que você pede e está sempre animado e disposto a deixar todos os convidados entretidos. Sem contar no ótimo custo benefício... Profissional dedicado ao que faz. Muito obrigada por tudo!',
     rating: 5,
-    avatar: '🏢',
     destaque: 'Simplesmente o melhor! '
   },
   {
-    nome: 'Turma de Medicina 2024',
+    nome: 'Gabi Pereira',
     texto: `Parabéns por ter escolhido ser DJ, você nasceu pra isso!
 Poucos tem esse feeling, essa responsabilidade e organização, faz toda a diferença em um evento.
 Conte comigo, estou aqui para o que precisar <3`,
     rating: 5,
-    avatar: '🎓',
     destaque: 'Você nasceu pra isso!'
+  },
+  {
+    nome: 'Nakah',
+    texto: `Melhor dj do mundo!! Sabe como animar uma festa da maneira correta , transmiti uma energia ótima no palco`,
+    rating: 5,
+    destaque: 'Energia ótima no palco'
+  },
+  {
+    nome: 'Agoncilio Canoa',
+    texto: `Espetacular, equipe pontual extrovertida, com uma sem fim de playlists, ele faz a festa !!!!!`,
+    rating: 5,
+    destaque: 'Equipe pontual extrovertida'
   },
 ];
 
@@ -64,7 +72,7 @@ export default function TestimonialsSection() {
           >
             Prova Social
           </motion.span>
-          
+
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -75,7 +83,7 @@ export default function TestimonialsSection() {
             O que nossos clientes
             <span className="gradient-text block">estão falando</span>
           </motion.h2>
-          
+
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -83,7 +91,7 @@ export default function TestimonialsSection() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-xl text-gray-300 max-w-3xl mx-auto"
           >
-            A satisfação dos nossos clientes é nossa maior recompensa. 
+            A satisfação dos nossos clientes é nossa maior recompensa.
             Veja os depoimentos de quem já viveu uma experiência inesquecível.
           </motion.p>
         </motion.div>
@@ -133,7 +141,6 @@ export default function TestimonialsSection() {
 
                 {/* Avatar e destaque */}
                 <div className="flex items-center gap-4 mb-6">
-                  <div className="text-3xl">{depoimento.avatar}</div>
                   <div className="flex-1">
                     <h3 className="font-bold text-japan-white">{depoimento.nome}</h3>
                     <p className="text-sm text-neon-blue">{depoimento.evento}</p>
@@ -180,15 +187,15 @@ export default function TestimonialsSection() {
               Quer ser o próximo depoimento de sucesso?
             </h3>
             <p className="text-gray-300 mb-6">
-              Junte-se a centenas de clientes satisfeitos e transforme seu evento 
+              Junte-se a centenas de clientes satisfeitos e transforme seu evento
               em uma experiência inesquecível.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button className="btn-neon">
                 Solicitar orçamento
               </button>
-              <a target='_blanck' href='https://www.google.com/search?sca_esv=cdd4458fa27f824d&sxsrf=AE3TifN9uso0wWDYY78n1c1mwtzQcHu3Cw:1757981430546&si=AMgyJEtREmoPL4P1I5IDCfuA8gybfVI2d5Uj7QMwYCZHKDZ-E3CmmHPj8r7tic8Oxqy7bYbVV4Au4fkjuFs7d1xhGmbmncpPcH5jQv5BEg0ex5YpiFDGsQxpknH73EJY_fPyL1wD-UPKlKJeT4z2zrlOqjk9pNKqoA%3D%3D&q=Dj+Japa+-+Dj+em+Bras%C3%ADlia+Reviews&sa=X&ved=2ahUKEwjo3MGV_9uPAxWdp5UCHXScO0oQ0bkNegQIGxAC&biw=1478&bih=711&dpr=1.25' 
-              className="px-8 py-4 bg-transparent border border-neon-purple/50 text-neon-purple font-semibold rounded-lg transition-all duration-300 hover:bg-neon-purple/10 hover:scale-105">
+              <a target='_blanck' href='https://www.google.com/search?sca_esv=cdd4458fa27f824d&sxsrf=AE3TifN9uso0wWDYY78n1c1mwtzQcHu3Cw:1757981430546&si=AMgyJEtREmoPL4P1I5IDCfuA8gybfVI2d5Uj7QMwYCZHKDZ-E3CmmHPj8r7tic8Oxqy7bYbVV4Au4fkjuFs7d1xhGmbmncpPcH5jQv5BEg0ex5YpiFDGsQxpknH73EJY_fPyL1wD-UPKlKJeT4z2zrlOqjk9pNKqoA%3D%3D&q=Dj+Japa+-+Dj+em+Bras%C3%ADlia+Reviews&sa=X&ved=2ahUKEwjo3MGV_9uPAxWdp5UCHXScO0oQ0bkNegQIGxAC&biw=1478&bih=711&dpr=1.25'
+                className="px-8 py-4 bg-transparent border border-neon-purple/50 text-neon-purple font-semibold rounded-lg transition-all duration-300 hover:bg-neon-purple/10 hover:scale-105">
                 Ver mais depoimentos
               </a>
             </div>

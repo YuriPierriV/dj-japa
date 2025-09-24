@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Noto_Sans_JP } from "next/font/google";
 import "./globals.css";
+import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 
 
 const inter = Inter({ 
@@ -99,6 +100,7 @@ export default function RootLayout({
       </head>
       <body className="font-sans antialiased">
         {children}
+        <FloatingWhatsApp />
       </body>
     </html>
   );

@@ -23,16 +23,16 @@ export default function AboutSection() {
             <div className="relative w-full h-[600px] rounded-2xl overflow-hidden glass-effect">
               {/* Imagem real do DJ */}
               <Image
-                src="/fotoDJ.JPG"
-                alt="DJ Japa em ação"
+                src="/imagens/principal.JPG"
+                alt="DJ Japa em ação durante apresentação profissional"
                 fill
                 className="object-cover object-center"
-                sizes="(max-width: 768px) 100vw, 600px"
-                priority={false}
+                priority={true}
+                quality={95}
               />
               
               {/* Sobreposição com efeito neon */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
               
               {/* Elementos flutuantes */}
               <div className="absolute top-4 right-4 w-8 h-8 bg-neon-pink/30 rounded-full animate-pulse"></div>

@@ -28,7 +28,7 @@ export default function ContactSection() {
       e.preventDefault();
       return;
     }
-    const numero = ''; // Substitua pelo num
+    const numero = '556198383473'; // Substitua pelo num
     const url =
       `https://wa.me/${numero}?text=` +
       encodeURIComponent(
@@ -98,8 +98,7 @@ export default function ContactSection() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-xl text-gray-300 max-w-3xl mx-auto"
           >
-            As melhores datas voam rápido! Preencha o formulário e receba seu orçamento personalizado 
-            em até 2 horas.
+            As melhores datas voam rápido! Preencha o formulário e receba seu orçamento personalizado.
           </motion.p>
         </motion.div>
 
@@ -116,10 +115,10 @@ export default function ContactSection() {
             <div className="glass-effect rounded-2xl p-8 border border-neon-red/30 bg-gradient-to-br from-neon-red/5 to-neon-pink/5">
               <div className="flex items-center gap-4 mb-4">
                 <div className="w-3 h-3 bg-neon-red rounded-full animate-pulse"></div>
-                <h3 className="text-2xl font-bold text-neon-red">Atenção!</h3>
+                <h3 className="text-2xl font-bold text-neon-red">Sua festa merece!</h3>
               </div>
               <p className="text-gray-300 leading-relaxed">
-                Não perca a oportunidade de ter o DJ mais requisitado da região no seu evento!
+                Um bom DJ é essencial para criar a atmosfera perfeita e fazer seus convidados se divertirem de verdade. Não deixe sua festa na mão do acaso!
               </p>
             </div>
 
@@ -136,7 +135,7 @@ export default function ContactSection() {
                   </div>
                   <div>
                     <p className="text-gray-400 text-sm">WhatsApp</p>
-                    <p className="text-japan-white font-semibold">(11) 99999-9999</p>
+                    <p className="text-japan-white font-semibold">(61) 9838-3473</p>
                   </div>
                 </div>
 
@@ -156,7 +155,7 @@ export default function ContactSection() {
                   </div>
                   <div>
                     <p className="text-gray-400 text-sm">Atendimento</p>
-                    <p className="text-japan-white font-semibold">São Paulo e Região</p>
+                    <p className="text-japan-white font-semibold">Brasília e região</p>
                   </div>
                 </div>
 
@@ -186,7 +185,7 @@ export default function ContactSection() {
                 </li>
                 <li className="flex items-center gap-2">
                   <div className="w-1.5 h-1.5 bg-neon-pink rounded-full"></div>
-                  Satisfação ou seu dinheiro de volta
+                  Satisfação
                 </li>
               </ul>
             </div>
@@ -230,7 +229,7 @@ export default function ContactSection() {
                     onChange={e => setFormData({ ...formData, telefone: e.target.value })}
                     required
                     className="w-full px-4 py-3 bg-japan-gray/50 border border-neon-blue/30 rounded-lg text-japan-white placeholder-gray-500 focus:border-neon-blue focus:outline-none focus:ring-2 focus:ring-neon-blue/20 transition-all duration-300"
-                    placeholder="(11) 99999-9999"
+                    placeholder="(61) 99999-9999"
                   />
                 </div>
               </div>
