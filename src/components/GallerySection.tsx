@@ -12,7 +12,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/free-mode';
 
 // Componente para thumbnail de vídeo
-const VideoThumbnail = ({ src, alt, className }: { src: string; alt: string; className?: string }) => {
+const VideoThumbnail = ({ src, className }: { src: string; className?: string }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [thumbnailLoaded, setThumbnailLoaded] = useState(false);
 
@@ -96,14 +96,6 @@ const mediaItems = [
     category: 'equipamentos'
   },
   {
-    id: 6,
-    type: 'video',
-    title: 'Setup em Ação',
-    description: 'Equipamentos profissionais',
-    src: '/videos/IMG_2460.MOV',
-    category: 'equipamentos'
-  },
-  {
     id: 7,
     type: 'image',
     title: 'Ambiente Festivo',
@@ -141,14 +133,6 @@ const mediaItems = [
     title: 'Evento Corporativo',
     description: 'Profissionalismo garantido',
     src: '/imagens/_DSC8586.JPEG',
-    category: 'corporativo'
-  },
-  {
-    id: 12,
-    type: 'video',
-    title: 'Festa Corporativa',
-    description: 'Ambiente profissional',
-    src: '/videos/IMG_2463.MOV',
     category: 'corporativo'
   },
   {
@@ -254,14 +238,6 @@ const mediaItems = [
     description: 'Qualidade excepcional',
     src: '/videos/IMG_3114.MOV',
     category: 'premium'
-  },
-  {
-    id: 26,
-    type: 'video',
-    title: 'Festa Animada',
-    description: 'Energia contagiante',
-    src: '/videos/IMG_3115.MOV',
-    category: 'festa'
   },
   {
     id: 27,
@@ -532,7 +508,6 @@ export default function GallerySection() {
                       /* Thumbnail do vídeo */
                       <VideoThumbnail
                         src={item.src}
-                        alt={item.title}
                         className="group-hover:scale-110"
                       />
                     )}

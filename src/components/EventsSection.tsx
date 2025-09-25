@@ -180,7 +180,7 @@ export default function EventsSection() {
               Evento diferente?
             </h3>
             <p className="text-sm md:text-base text-gray-300 mb-4 md:mb-6">
-              Clique em "Outro" acima ou fale conosco diretamente
+              Clique em &quot;Outro&quot; acima ou fale conosco diretamente
             </p>
             <button 
               onClick={() => {
