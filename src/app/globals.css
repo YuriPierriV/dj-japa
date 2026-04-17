@@ -1,47 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Swiper Gallery Styles */
+@layer base {
+  :root {
+    --background: 38 32% 95%;
+    --foreground: 224 25% 17%;
+    --card: 0 0% 100%;
+    --card-foreground: 224 25% 17%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 224 25% 17%;
+    --primary: 37 45% 62%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 38 23% 90%;
+    --secondary-foreground: 224 25% 17%;
+    --muted: 33 17% 90%;
+    --muted-foreground: 26 5% 42%;
+    --accent: 38 23% 90%;
+    --accent-foreground: 224 25% 17%;
+    --destructive: 0 72% 50%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 30 17% 84%;
+    --input: 30 17% 84%;
+    --ring: 37 45% 62%;
+    --radius: 0.5rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-wedding-white text-wedding-navy font-sans antialiased;
+  }
+}
+
+@layer components {
+  .section-padding {
+    @apply px-6 lg:px-12 py-20 lg:py-28;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-sm px-8 py-5 font-serif text-sm uppercase tracking-[0.14em] transition-all duration-300;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center rounded-sm border border-wedding-navy/25 px-8 py-4 font-serif text-sm uppercase tracking-[0.14em] text-wedding-navy transition-all duration-300 hover:border-wedding-gold hover:text-wedding-gold hover:bg-white;
+  }
+}
+
+/* Swiper Gallery */
 .gallery-swiper .swiper-pagination {
   bottom: 0 !important;
 }
 
 .gallery-swiper .swiper-pagination-bullet {
-  @apply bg-neon-blue/30 w-2 h-2;
+  @apply bg-wedding-gold/30 w-2 h-2;
 }
 
 .gallery-swiper .swiper-pagination-bullet-active {
-  @apply bg-neon-blue w-3 h-2 rounded-full;
+  @apply bg-wedding-gold w-4 h-2 rounded-full;
 }
 
 .gallery-swiper .swiper-slide {
   height: auto;
 }
 
-/* Floating WhatsApp Styles */
-.floating-whatsapp {
-  z-index: 9999;
-}
-
-/* Garantir que o botão não interfira com outros elementos */
-@media (max-width: 768px) {
-  .floating-whatsapp {
-    bottom: 1rem !important;
-    right: 1rem !important;
-  }
-}
-
-/* Animação personalizada do WhatsApp */
+/* Floating WhatsApp pulse */
 @keyframes whatsapp-pulse {
   0% {
     transform: scale(1);
     box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
   }
+
   70% {
     transform: scale(1.05);
     box-shadow: 0 0 0 10px rgba(37, 211, 102, 0);
   }
+
   100% {
     transform: scale(1);
     box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
@@ -51,136 +93,3 @@
 .whatsapp-pulse {
   animation: whatsapp-pulse 2s infinite;
 }
-
-/* Efeito glow/led para títulos HeroSection */
-.led-glow {
-  text-shadow:
-    0 0 12px #10D7FF,
-    0 0 24px #C77DFF,
-    0 0 32px #FF10F0,
-    0 0 48px #10D7FF80;
-}
-
-@keyframes glow {
-  0%, 100% {
-    filter: drop-shadow(0 0 16px #10D7FF) drop-shadow(0 0 32px #C77DFF80);
-  }
-  50% {
-    filter: drop-shadow(0 0 32px #10D7FF) drop-shadow(0 0 48px #FF10F080);
-  }
-}
-.animate-glow {
-  animation: glow 2.8s ease-in-out infinite;
-}
-
-
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap');
-
-@layer base {
-  :root {
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 240 10% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 240 5.9% 10%;
-    --secondary: 240 3.7% 15.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
-    --accent: 240 3.7% 15.9%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 240 4.9% 83.9%;
-    --radius: 0.5rem;
-  }
-}
-
-@layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-japan-dark text-japan-white font-sans;
-    background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
-    min-height: 100vh;
-  }
-  
-  /* Efeitos japoneses modernos */
-  .japanese-glow {
-    text-shadow: 0 0 10px rgba(16, 215, 255, 0.5);
-  }
-  
-  .neon-border {
-    border: 1px solid rgba(16, 215, 255, 0.3);
-    box-shadow: 0 0 10px rgba(16, 215, 255, 0.2);
-  }
-  
-  .glass-effect {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-  }
-  
-  /* Scroll suave */
-  html {
-    scroll-behavior: smooth;
-  }
-  
-  /* Customização da scrollbar */
-  ::-webkit-scrollbar {
-    width: 6px;
-  }
-  
-  ::-webkit-scrollbar-track {
-    background: #1E293B;
-  }
-  
-  ::-webkit-scrollbar-thumb {
-    background: linear-gradient(45deg, #10D7FF, #C77DFF);
-    border-radius: 3px;
-  }
-  
-  ::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(45deg, #06B6D4, #A855F7);
-  }
-}
-
-@layer components {
-  .btn-neon {
-    @apply relative px-8 py-4 bg-transparent border-2 border-neon-blue text-neon-blue font-semibold transition-all duration-300 hover:bg-neon-blue hover:text-japan-dark hover:shadow-lg;
-    box-shadow: 0 0 20px rgba(16, 215, 255, 0.3);
-  }
-  
-  .btn-neon:hover {
-    box-shadow: 0 0 30px rgba(16, 215, 255, 0.6);
-    transform: translateY(-2px);
-  }
-  
-  .card-japan {
-    @apply glass-effect rounded-lg p-6 transition-all duration-300 hover:scale-105;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-  }
-  
-  .card-japan:hover {
-    box-shadow: 0 10px 30px rgba(16, 215, 255, 0.2);
-  }
-  
-  .gradient-text {
-    background: linear-gradient(45deg, #10D7FF, #C77DFF, #FF10F0);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-  
-  .section-padding {
-    @apply px-4 sm:px-6 lg:px-8 py-16 lg:py-24;
-  }
-}
-
-

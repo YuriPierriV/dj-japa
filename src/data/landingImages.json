@@ -1,0 +1,67 @@
+{
+  "hero": {
+    "background": {
+      "location": "landing.hero.background",
+      "route": "/imagens/principal.jpg"
+    }
+  },
+  "about": {
+    "primary": {
+      "location": "landing.about.primary",
+      "route": "/imagens/japa1.jpg"
+    },
+    "secondary": {
+      "location": "landing.about.secondary",
+      "route": "/imagens/japa2.jpg"
+    }
+  },
+  "deliveryProcess": {
+    "alignment": {
+      "location": "landing.delivery-process.alignment",
+      "route": "/imagens/align.png"
+    },
+    "curation": {
+      "location": "landing.delivery-process.curation",
+      "route": "/imagens/entendimento.jpg"
+    },
+    "structure": {
+      "location": "landing.delivery-process.structure",
+      "route": "/videos/estrutura.mp4"
+    },
+    "execution": {
+      "location": "landing.delivery-process.execution",
+      "route": "/imagens/exec.png"
+    }
+  },
+  "storiesArchive": {
+    "items": [
+      {
+        "location": "landing.stories-archive.item-1",
+        "name": "Amanda & Lucas",
+        "text": "A pista ficou cheia a noite inteira. O repertório parecia feito sob medida para cada momento, fomos surpreendidos com a conexão que ele teve com a nossa pista.",
+        "mediaType": "video",
+        "mediaSrc": "/videos/casamento.mp4"
+      },
+      {
+        "location": "landing.stories-archive.item-2",
+        "name": "Mariana & Felipe",
+        "text": "Sensibilidade total para conduzir a energia da recepção. Nossa festa foi exatamente como sonhamos, tudo muito chique e sem uma única queda de animação.",
+        "mediaType": "video",
+        "mediaSrc": "/videos/vid2.mp4"
+      },
+      {
+        "location": "landing.stories-archive.item-3",
+        "name": "Bruna & Caio",
+        "text": "Som cristalino, transições absurdamente perfeitas e um atendimento ultra próximo desde o primeiro contato. A entrega visual e sonora foi digna de cinema.",
+        "mediaType": "image",
+        "mediaSrc": "/imagens/japa1.jpg"
+      }
+    ]
+  },
+  "contact": {
+    "background": {
+      "location": "landing.contact.background",
+      "route": "/imagens/principal.JPG"
+    }
+  }
+}
