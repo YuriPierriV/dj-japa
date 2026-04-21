@@ -5,6 +5,7 @@ type LeadPayload = {
   telefone?: string;
   email?: string;
   dataEvento?: string;
+  source?: string;
 };
 
 function isValidLead(payload: LeadPayload) {
@@ -49,7 +50,7 @@ export async function POST(request: Request) {
       phone: payload.telefone?.trim(),
       email: payload.email?.trim(),
       wedding_date: payload.dataEvento,
-      source: 'vip_whatsapp_button',
+      source: payload.source?.trim() || 'vip_whatsapp_button',
     }),
     cache: 'no-store',
   });

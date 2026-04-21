@@ -1,17 +1,27 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { trackContactIntent } from '@/lib/tracking';
 
-export default function FloatingWhatsApp() {
+type FloatingWhatsAppProps = {
+  message: string;
+  trackingSource: string;
+};
+
+export default function FloatingWhatsApp({
+  message,
+  trackingSource,
+}: FloatingWhatsAppProps) {
   const abrirWhatsApp = () => {
     const numero = '556198383473'; // Substitua pelo seu número real
-    const mensagem = 'Olá! Gostaria de contratar seus serviços de DJ.';
-    const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`;
+    const url = `https://wa.me/${numero}?text=${encodeURIComponent(message)}`;
+    trackContactIntent(trackingSource);
     window.open(url, '_blank');
   };
 
   return (
     <motion.button
+      aria-label="Abrir conversa no WhatsApp"
       onClick={abrirWhatsApp}
       className="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg whatsapp-pulse"
       whileHover={{ scale: 1.1 }}

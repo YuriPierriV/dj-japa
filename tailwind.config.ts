@@ -62,8 +62,8 @@ const config: Config = {
         },
       },
       fontFamily: {
-        sans: ['Inter', 'Noto Sans JP', 'Segoe UI', 'sans-serif'],
-        serif: ['Cormorant Garamond', 'Georgia', 'serif'],
+        sans: ['var(--font-sans)', 'Segoe UI', 'sans-serif'],
+        serif: ['var(--font-serif)', 'Georgia', 'serif'],
       },
       keyframes: {
         'accordion-down': {

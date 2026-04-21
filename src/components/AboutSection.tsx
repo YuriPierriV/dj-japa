@@ -2,78 +2,108 @@
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import landingImages from '@/data/landingImages.json';
 
-export default function AboutSection() {
+type AboutSectionProps = {
+  kicker: string;
+  title: string;
+  paragraphs: string[];
+  primaryImageSrc: string;
+  primaryImageAlt: string;
+  secondaryImageSrc: string;
+  secondaryImageAlt: string;
+  ctaLabel: string;
+};
+
+export default function AboutSection({
+  kicker,
+  title,
+  paragraphs,
+  primaryImageSrc,
+  primaryImageAlt,
+  secondaryImageSrc,
+  secondaryImageAlt,
+  ctaLabel,
+}: AboutSectionProps) {
   return (
-    <section id="sobre" className="section-padding bg-wedding-sand relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+    <section id="sobre" className="relative z-20 -mt-12 overflow-visible rounded-t-[2.5rem] bg-wedding-sand px-6 py-20 shadow-[0_-20px_40px_rgba(0,0,0,0.4)] sm:-mt-24 sm:rounded-t-[4rem] sm:px-12 sm:py-32">
+      <div className="mx-auto max-w-6xl">
 
-          {/* Left Side - Images */}
+        {/* Storytelling Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8 }}
+          className="mb-12 max-w-3xl sm:mb-20"
+        >
+          <div className="mb-4 flex items-center gap-4 sm:mb-6">
+            <div className="h-[1px] w-12 bg-wedding-navy/40"></div>
+            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-wedding-navy">
+              {kicker}
+            </span>
+          </div>
+          <h2 className="font-serif text-[2.2rem] font-medium leading-[1.1] tracking-tight text-wedding-navy sm:text-5xl md:text-[3.5rem] [text-wrap:balance]">
+            {title}
+          </h2>
+        </motion.div>
+
+        {/* Layout Interativo / Storytelling */}
+        <div className="grid items-start gap-12 lg:grid-cols-12 lg:gap-24">
+
+          {/* Coluna Texto (Flow Guiado) */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1 }}
-            className="relative w-full aspect-[4/5] sm:aspect-auto sm:h-[550px] max-w-md mx-auto lg:max-w-none"
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="space-y-8 lg:col-span-5"
           >
-            <div className="absolute top-0 right-0 w-[90%] sm:w-[85%] h-[85%] rounded-sm overflow-hidden z-10">
-              <Image
-                src={landingImages.about.primary.route}
-                alt="DJ em casamento"
-                fill
-                className="object-cover object-center transition-all duration-700"
-                sizes="(max-width: 768px) 100vw, 50vw"
-              />
-              <div className="absolute inset-0 border border-white/20 m-3 sm:m-4 rounded-sm pointer-events-none"></div>
+            <div className="space-y-6 text-base font-light leading-relaxed text-wedding-muted sm:text-lg [&_strong]:font-medium [&_strong]:text-wedding-navy">
+              {paragraphs.map((paragraph, i) => (
+                <p key={i} className="leading-loose tracking-wide" dangerouslySetInnerHTML={{ __html: paragraph }} />
+              ))}
             </div>
 
-            <div className="absolute bottom-0 left-0 w-[65%] sm:w-[60%] h-[45%] sm:h-[50%] rounded-sm overflow-hidden shadow-2xl z-20 border-4 sm:border-8 border-wedding-sand">
-              <Image
-                src={landingImages.about.secondary.route}
-                alt="Detalhe DJ premium"
-                fill
-                className="object-cover object-top"
-                sizes="(max-width: 768px) 100vw, 50vw"
-              />
+            <div className="pt-2 sm:pt-4">
+              <a href="#contato" className="group inline-flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.2em] text-wedding-navy transition-colors hover:text-[#b89568] sm:text-xs">
+                <span className="border-b border-wedding-navy/30 pb-1 transition-colors group-hover:border-[#b89568]">{ctaLabel}</span>
+                <span className="mb-1 transition-transform group-hover:translate-x-1">→</span>
+              </a>
             </div>
           </motion.div>
 
-          {/* Right Side - Extremely Focused Content */}
+          {/* Coluna Visual (Bento Composition) */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
+            initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1, delay: 0.2 }}
-            className="space-y-8"
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="relative w-full max-w-2xl mx-auto lg:col-span-7 lg:max-w-none"
           >
-            <div className="space-y-4">
-              <div className="flex items-center gap-4">
-                <div className="h-[1px] w-12 bg-wedding-navy/40"></div>
-                <span className="uppercase tracking-[0.2em] text-xs font-bold text-wedding-navy">
-                  A Garantia
-                </span>
+            <div className="relative aspect-[4/5] w-full sm:aspect-[3/2] lg:aspect-[4/3]">
+
+              {/* Foto Principal (Ao fundo, lado direito) */}
+              <div className="absolute right-0 top-0 h-[85%] w-[85%] overflow-hidden rounded-2xl bg-zinc-200">
+                <Image
+                  src={primaryImageSrc}
+                  alt={primaryImageAlt}
+                  fill
+                  className="object-cover object-center transition-transform hover:scale-105 duration-[2s]"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
               </div>
 
-              <h2 className="font-serif text-4xl lg:text-5xl font-medium text-wedding-navy leading-[1.2]">
-                Mais de 15 anos transformando festas em <span className="italic font-bold">espetáculos.</span>
-              </h2>
-            </div>
+              {/* Foto Secundária (Flutuando na base esquerda) */}
+              <div className="absolute bottom-0 left-0 h-[55%] w-[55%] overflow-hidden rounded-2xl border-8 border-wedding-sand bg-zinc-100 shadow-2xl">
+                <Image
+                  src={secondaryImageSrc}
+                  alt={secondaryImageAlt}
+                  fill
+                  className="object-cover object-top transition-transform hover:scale-105 duration-[2s]"
+                  sizes="(max-width: 768px) 100vw, 30vw"
+                />
+              </div>
 
-            <div className="text-base sm:text-lg text-wedding-muted font-light leading-relaxed space-y-6">
-              <p>
-                O sucesso do seu casamento não acontece por acaso. Ele é o resultado de uma pista liderada com <strong className="text-wedding-navy font-bold">leitura afiada</strong> e uma estrutura de som <strong className="text-wedding-navy font-bold">visualmente impecável</strong>.
-              </p>
-              <p>
-                Eu entrego exatamente isso: a certeza de que a trilha sonora será <strong className="text-wedding-navy font-bold">inesquecível</strong> e livre de preocupações, da cerimônia até <strong className="text-wedding-navy font-bold">o último convidado sair</strong>.
-              </p>
-            </div>
-
-            <div className="pt-4">
-              <a href="#como-funciona" className="btn-outline inline-block text-sm uppercase tracking-widest font-semibold text-wedding-navy">
-                Entenda a minha entrega
-              </a>
             </div>
           </motion.div>
         </div>

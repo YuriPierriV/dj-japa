@@ -1,13 +1,54 @@
 'use client';
 
+import Link from 'next/link';
 import { FaWhatsapp } from "react-icons/fa";
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import Image from 'next/image';
-import landingImages from '@/data/landingImages.json';
 import JLogo from '@/components/JLogo';
+import { trackLead } from '@/lib/tracking';
 
-export default function ContactSection() {
+type ContactSectionProps = {
+  trackingPrefix: string;
+  kicker: string;
+  title: string;
+  highlight: string;
+  description: string;
+  backgroundImageSrc: string;
+  backgroundImageAlt: string;
+  formTitle: string;
+  formSubtitle: string;
+  nameLabel: string;
+  namePlaceholder: string;
+  dateLabel: string;
+  buttonLabel: string;
+  whatsappTemplate: string;
+  whatsappFollowUp: string;
+};
+
+function renderWhatsappTemplate(template: string, nome: string, data: string) {
+  return template
+    .replace('{nome}', nome)
+    .replace('{data}', data);
+}
+
+export default function ContactSection({
+  trackingPrefix,
+  kicker,
+  title,
+  highlight,
+  description,
+  backgroundImageSrc,
+  backgroundImageAlt,
+  formTitle,
+  formSubtitle,
+  nameLabel,
+  namePlaceholder,
+  dateLabel,
+  buttonLabel,
+  whatsappTemplate,
+  whatsappFollowUp,
+}: ContactSectionProps) {
   const [formData, setFormData] = useState({
     nome: '',
     telefone: '',
@@ -36,7 +77,10 @@ export default function ContactSection() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          ...formData,
+          source: `${trackingPrefix}_vip_whatsapp_button`,
+        }),
       });
     } catch (error) {
       console.error('Erro ao salvar lead antes do WhatsApp.', error);
@@ -48,10 +92,11 @@ export default function ContactSection() {
     const url =
       `https://wa.me/${numero}?text=` +
       encodeURIComponent(
-        `Olá, DJ Japa! Nós somos *${formData.nome}* e vamos nos casar no dia *${dataFormatada}*.\n\n` +
-        `Queremos uma festa inesquecível, com uma pista viva do começo ao fim, e por isso gostaríamos de solicitar um orçamento com você para o nosso grande dia.\n\n` +
-        `Ficamos no aguardo para conhecer os próximos passos.`
+        `${renderWhatsappTemplate(whatsappTemplate, formData.nome, dataFormatada)}\n\n` +
+        `${whatsappFollowUp}\n\n` +
+        'Ficamos no aguardo para conhecer os proximos passos.'
       );
+    trackLead(`${trackingPrefix}_vip_whatsapp_button`);
     window.open(url, '_blank');
     setIsSubmitting(false);
   }
@@ -62,8 +107,8 @@ export default function ContactSection() {
       {/* Background with luxury image overlay */}
       <div className="absolute inset-0 w-full h-full">
         <Image
-          src={landingImages.contact.background.route}
-          alt="Casamento Clímax"
+          src={backgroundImageSrc}
+          alt={backgroundImageAlt}
           fill
           className="object-cover object-center opacity-30 grayscale-[70%]"
           sizes="100vw"
@@ -88,17 +133,17 @@ export default function ContactSection() {
               <div className="flex items-center gap-4">
                 <div className="h-[1px] w-12 bg-wedding-gold"></div>
                 <span className="uppercase tracking-[0.2em] text-xs font-semibold text-wedding-gold">
-                  Inicie o seu Planejamento
+                  {kicker}
                 </span>
               </div>
 
               <h2 className="font-serif text-5xl lg:text-7xl font-medium text-wedding-white leading-[1.1]">
-                Prontos para a festa <span className="italic text-wedding-gold block mt-2">da sua vida?</span>
+                {title} <span className="italic text-wedding-gold block mt-2">{highlight}</span>
               </h2>
             </div>
 
             <p className="text-lg text-wedding-white/70 font-light max-w-md leading-relaxed">
-              Dê o primeiro passo rumo a uma trilha sonora impecável. Preencha os dados e receba uma proposta VIP desenhada exclusivamente para o seu casamento.
+              {description}
             </p>
           </motion.div>
 
@@ -118,24 +163,26 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <h3 className="font-serif text-2xl sm:text-3xl font-medium text-wedding-white mb-1">
-                    Solicitar Proposta
+                    {formTitle}
                   </h3>
                   <p className="text-wedding-white/50 font-light text-xs uppercase tracking-widest hidden sm:block">
-                    Atendimento Exclusivo
+                    {formSubtitle}
                   </p>
                 </div>
               </div>
 
-              <form className="space-y-8" autoComplete="off">
+              <form className="space-y-8" autoComplete="on">
                 <div>
-                  <label className="block text-[10px] uppercase tracking-widest text-wedding-white/50 mb-2">Nome dos Noivos *</label>
+                  <label className="block text-[10px] uppercase tracking-widest text-wedding-white/50 mb-2">{nameLabel}</label>
                   <input
                     type="text"
+                    autoComplete="name"
+                    name="nome"
                     value={formData.nome}
                     onChange={e => setFormData({ ...formData, nome: e.target.value })}
                     required
                     className="w-full px-0 py-3 bg-transparent border-b border-wedding-white/20 text-wedding-white placeholder-wedding-white/20 focus:border-wedding-gold focus:outline-none transition-colors font-light text-base md:text-lg"
-                    placeholder="Ex: João e Maria"
+                    placeholder={namePlaceholder}
                   />
                 </div>
 
@@ -144,6 +191,9 @@ export default function ContactSection() {
                     <label className="block text-[10px] uppercase tracking-widest text-wedding-white/50 mb-2">WhatsApp *</label>
                     <input
                       type="tel"
+                      autoComplete="tel"
+                      inputMode="tel"
+                      name="telefone"
                       value={formData.telefone}
                       onChange={e => setFormData({ ...formData, telefone: e.target.value })}
                       required
@@ -153,9 +203,10 @@ export default function ContactSection() {
                   </div>
 
                   <div>
-                    <label className="block text-[10px] uppercase tracking-widest text-wedding-white/50 mb-2">Data do Casamento *</label>
+                    <label className="block text-[10px] uppercase tracking-widest text-wedding-white/50 mb-2">{dateLabel}</label>
                     <input
                       type="date"
+                      name="dataEvento"
                       value={formData.dataEvento}
                       onChange={e => setFormData({ ...formData, dataEvento: e.target.value })}
                       required
@@ -168,6 +219,8 @@ export default function ContactSection() {
                   <label className="block text-[10px] uppercase tracking-widest text-wedding-white/50 mb-2">E-mail *</label>
                   <input
                     type="email"
+                    autoComplete="email"
+                    name="email"
                     value={formData.email}
                     onChange={e => setFormData({ ...formData, email: e.target.value })}
                     required
@@ -185,11 +238,15 @@ export default function ContactSection() {
                   >
                     <FaWhatsapp className="w-5 h-5 md:w-6 md:h-6 relative z-10" />
                     <span className="relative z-10">
-                      {isSubmitting ? 'Preparando...' : 'Solicitar Formato VIP'}
+                      {isSubmitting ? 'Preparando...' : buttonLabel}
                     </span>
                   </button>
-                  <p className="text-center text-[10px] text-wedding-white/40 uppercase tracking-widest mt-6">
-                    Seus dados estão 100% protegidos
+                  <p className="mt-6 text-center text-[10px] uppercase tracking-widest text-wedding-white/40">
+                    Seus dados são usados apenas para contato comercial.
+                    {' '}
+                    <Link className="underline underline-offset-4" href="/privacidade">
+                      Política de privacidade
+                    </Link>
                   </p>
                 </div>
               </form>
