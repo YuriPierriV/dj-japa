@@ -1,15 +1,18 @@
 import Script from 'next/script';
 
 const googleTagId = process.env.NEXT_PUBLIC_GOOGLE_TAG_ID;
+const googleAdsId = process.env.NEXT_PUBLIC_GOOGLE_ADS_ID;
 const metaPixelId = process.env.NEXT_PUBLIC_META_PIXEL_ID;
+
+const gtagLoaderId = googleTagId || googleAdsId;
 
 export default function MarketingScripts() {
   return (
     <>
-      {googleTagId ? (
+      {gtagLoaderId ? (
         <>
           <Script
-            src={`https://www.googletagmanager.com/gtag/js?id=${googleTagId}`}
+            src={`https://www.googletagmanager.com/gtag/js?id=${gtagLoaderId}`}
             strategy="afterInteractive"
           />
           <Script id="google-tag" strategy="afterInteractive">
@@ -18,7 +21,8 @@ export default function MarketingScripts() {
               function gtag(){dataLayer.push(arguments);}
               window.gtag = gtag;
               gtag('js', new Date());
-              gtag('config', '${googleTagId}');
+              ${googleTagId ? `gtag('config', '${googleTagId}');` : ''}
+              ${googleAdsId ? `gtag('config', '${googleAdsId}');` : ''}
             `}
           </Script>
         </>
