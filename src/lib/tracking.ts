@@ -7,6 +7,8 @@ declare global {
 }
 
 const googleAdsSendTo = process.env.NEXT_PUBLIC_GOOGLE_ADS_SEND_TO;
+const googleAdsCurrency = process.env.NEXT_PUBLIC_GOOGLE_ADS_CURRENCY || 'BRL';
+const googleAdsValue = Number(process.env.NEXT_PUBLIC_GOOGLE_ADS_VALUE || 1);
 
 export function trackContactIntent(source: string) {
   if (typeof window === 'undefined') {
@@ -29,15 +31,21 @@ export function trackLead(source: string) {
 
   window.gtag?.('event', 'generate_lead', {
     lead_source: source,
+    value: googleAdsValue,
+    currency: googleAdsCurrency,
   });
 
   if (googleAdsSendTo) {
     window.gtag?.('event', 'conversion', {
       send_to: googleAdsSendTo,
+      value: googleAdsValue,
+      currency: googleAdsCurrency,
     });
   }
 
   window.fbq?.('track', 'Lead', {
     lead_source: source,
+    value: googleAdsValue,
+    currency: googleAdsCurrency,
   });
 }
