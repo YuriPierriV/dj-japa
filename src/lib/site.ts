@@ -44,7 +44,7 @@ export const siteConfig = {
   ],
   locale: 'pt_BR',
   siteUrl: normalizeSiteUrl(rawSiteUrl),
-  ogImage: '/imagens/fotoDJ.JPG',
+  ogImage: 'https://rrpxyvobyxlbykuyhhpo.supabase.co/storage/v1/object/public/media/imagens/fotoDJ.JPG',
   logo: '/imagens/j-logo.png',
   whatsappNumber: '556198383473',
   phoneE164: '+556198383473',

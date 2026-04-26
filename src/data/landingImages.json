@@ -1,125 +1,125 @@
 {
   "casamento": {
-    "hero": "/imagens/principal.jpg",
+    "hero": "https://rrpxyvobyxlbykuyhhpo.supabase.co/storage/v1/object/public/media/imagens/principal.jpg",
     "heroVideo": null,
     "about": {
-      "primary": "/imagens/japa1.jpg",
-      "secondary": "/imagens/japa2.jpg"
+      "primary": "https://rrpxyvobyxlbykuyhhpo.supabase.co/storage/v1/object/public/media/imagens/japa1.jpg",
+      "secondary": "https://rrpxyvobyxlbykuyhhpo.supabase.co/storage/v1/object/public/media/imagens/japa2.jpg"
     },
     "process": {
       "alignment": {
         "type": "image",
-        "src": "/imagens/corp2.jpg"
+        "src": "https://rrpxyvobyxlbykuyhhpo.supabase.co/storage/v1/object/public/media/imagens/corp2.jpg"
       },
       "curation": {
         "type": "image",
-        "src": "/imagens/entendimento.jpg"
+        "src": "https://rrpxyvobyxlbykuyhhpo.supabase.co/storage/v1/object/public/media/imagens/entendimento.jpg"
       },
       "structure": {
         "type": "video",
-        "src": "/videos/estrutura.mp4"
+        "src": "https://rrpxyvobyxlbykuyhhpo.supabase.co/storage/v1/object/public/media/videos/estrutura.mp4"
       },
       "execution": {
         "type": "image",
-        "src": "/imagens/exec.png"
+        "src": "https://rrpxyvobyxlbykuyhhpo.supabase.co/storage/v1/object/public/media/imagens/exec.png"
       }
     },
     "stories": [
       {
         "type": "video",
-        "src": "/videos/casamento.mp4"
+        "src": "https://rrpxyvobyxlbykuyhhpo.supabase.co/storage/v1/object/public/media/videos/casamento.mp4"
       },
       {
         "type": "video",
-        "src": "/videos/vid2.mp4"
+        "src": "https://rrpxyvobyxlbykuyhhpo.supabase.co/storage/v1/object/public/media/videos/vid2.mp4"
       },
       {
         "type": "video",
-        "src": "/videos/IMG_8726.MOV"
+        "src": "https://rrpxyvobyxlbykuyhhpo.supabase.co/storage/v1/object/public/media/videos/IMG_8726.MOV"
       }
     ],
-    "contact": "/imagens/principal.JPG"
+    "contact": "https://rrpxyvobyxlbykuyhhpo.supabase.co/storage/v1/object/public/media/imagens/principal.JPG"
   },
   "debutante": {
-    "hero": "/imagens/japafundi.jpg",
-    "heroVideo": "/videos/debutante-hero.mp4",
+    "hero": "https://rrpxyvobyxlbykuyhhpo.supabase.co/storage/v1/object/public/media/imagens/japafundi.jpg",
+    "heroVideo": "https://rrpxyvobyxlbykuyhhpo.supabase.co/storage/v1/object/public/media/videos/debutante-hero.mp4",
     "about": {
-      "primary": "/imagens/fotoDJ.JPG",
-      "secondary": "/imagens/japa1.jpg"
+      "primary": "https://rrpxyvobyxlbykuyhhpo.supabase.co/storage/v1/object/public/media/imagens/fotoDJ.JPG",
+      "secondary": "https://rrpxyvobyxlbykuyhhpo.supabase.co/storage/v1/object/public/media/imagens/japa1.jpg"
     },
     "process": {
       "alignment": {
         "type": "image",
-        "src": "/imagens/debutante_usandomesa.jpg"
+        "src": "https://rrpxyvobyxlbykuyhhpo.supabase.co/storage/v1/object/public/media/imagens/debutante_usandomesa.jpg"
       },
       "curation": {
         "type": "image",
-        "src": "/imagens/entendimento.jpg"
+        "src": "https://rrpxyvobyxlbykuyhhpo.supabase.co/storage/v1/object/public/media/imagens/entendimento.jpg"
       },
       "structure": {
         "type": "video",
-        "src": "/videos/estrutura.mp4"
+        "src": "https://rrpxyvobyxlbykuyhhpo.supabase.co/storage/v1/object/public/media/videos/estrutura.mp4"
       },
       "execution": {
         "type": "image",
-        "src": "/imagens/debutante_fim.png"
+        "src": "https://rrpxyvobyxlbykuyhhpo.supabase.co/storage/v1/object/public/media/imagens/debutante_fim.png"
       }
     },
     "stories": [
       {
         "type": "video",
-        "src": "/videos/debutante3.mp4"
+        "src": "https://rrpxyvobyxlbykuyhhpo.supabase.co/storage/v1/object/public/media/videos/debutante3.mp4"
       },
       {
         "type": "video",
-        "src": "/videos/debutante2.mp4"
+        "src": "https://rrpxyvobyxlbykuyhhpo.supabase.co/storage/v1/object/public/media/videos/debutante2.mp4"
       },
       {
         "type": "image",
-        "src": "/imagens/japafundi.jpg"
+        "src": "https://rrpxyvobyxlbykuyhhpo.supabase.co/storage/v1/object/public/media/imagens/japafundi.jpg"
       }
     ],
-    "contact": "/imagens/japafundi.jpg"
+    "contact": "https://rrpxyvobyxlbykuyhhpo.supabase.co/storage/v1/object/public/media/imagens/japafundi.jpg"
   },
   "festa-corporativa": {
-    "hero": "/imagens/corpfundo.jpg",
+    "hero": "https://rrpxyvobyxlbykuyhhpo.supabase.co/storage/v1/object/public/media/imagens/corpfundo.jpg",
     "heroVideo": null,
     "about": {
-      "primary": "/imagens/japa1.jpg",
-      "secondary": "/imagens/japa2.jpg"
+      "primary": "https://rrpxyvobyxlbykuyhhpo.supabase.co/storage/v1/object/public/media/imagens/japa1.jpg",
+      "secondary": "https://rrpxyvobyxlbykuyhhpo.supabase.co/storage/v1/object/public/media/imagens/japa2.jpg"
     },
     "process": {
       "alignment": {
         "type": "image",
-        "src": "/imagens/corp2.jpg"
+        "src": "https://rrpxyvobyxlbykuyhhpo.supabase.co/storage/v1/object/public/media/imagens/corp2.jpg"
       },
       "curation": {
         "type": "image",
-        "src": "/imagens/entendimento.jpg"
+        "src": "https://rrpxyvobyxlbykuyhhpo.supabase.co/storage/v1/object/public/media/imagens/entendimento.jpg"
       },
       "structure": {
         "type": "video",
-        "src": "/videos/estrutura.mp4"
+        "src": "https://rrpxyvobyxlbykuyhhpo.supabase.co/storage/v1/object/public/media/videos/estrutura.mp4"
       },
       "execution": {
         "type": "image",
-        "src": "/imagens/exec.png"
+        "src": "https://rrpxyvobyxlbykuyhhpo.supabase.co/storage/v1/object/public/media/imagens/exec.png"
       }
     },
     "stories": [
       {
         "type": "video",
-        "src": "/videos/casamento.mp4"
+        "src": "https://rrpxyvobyxlbykuyhhpo.supabase.co/storage/v1/object/public/media/videos/casamento.mp4"
       },
       {
         "type": "video",
-        "src": "/videos/vid2.mp4"
+        "src": "https://rrpxyvobyxlbykuyhhpo.supabase.co/storage/v1/object/public/media/videos/vid2.mp4"
       },
       {
         "type": "image",
-        "src": "/imagens/japa1.jpg"
+        "src": "https://rrpxyvobyxlbykuyhhpo.supabase.co/storage/v1/object/public/media/imagens/japa1.jpg"
       }
     ],
-    "contact": "/imagens/principal.JPG"
+    "contact": "https://rrpxyvobyxlbykuyhhpo.supabase.co/storage/v1/object/public/media/imagens/principal.JPG"
   }
 }
