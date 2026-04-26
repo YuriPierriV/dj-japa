@@ -58,14 +58,14 @@ export default function DeliveryProcessSection({
 
                 {/* 2x2 Bento Grid Cinematográfico */}
                 <div className="grid gap-6 md:grid-cols-2 lg:gap-8">
-                    {steps.map((step, index) => {
+                    {steps.map((step) => {
                         const StepIcon = iconMap[step.icon];
                         return (
                             <motion.div
                                 key={step.title}
                                 initial={{ opacity: 0.3, scale: 0.95, filter: 'brightness(0.3)', boxShadow: '0px 0px 30px rgba(0,0,0,0.5)', borderColor: 'rgba(255,255,255,0.05)' }}
                                 whileInView={{ opacity: 1, scale: 1, filter: 'brightness(1)', boxShadow: '0px 0px 40px rgba(201,166,113,0.08)', borderColor: 'rgba(201,166,113,0.15)' }}
-                                viewport={{ once: false, margin: "-15% 0px -15% 0px" }}
+                                viewport={{ once: true, margin: "-15% 0px -15% 0px" }}
                                 transition={{ duration: 0.7, ease: "easeOut" }}
                                 className="group relative flex flex-col overflow-hidden rounded-3xl bg-zinc-900 border transition-all duration-700 aspect-[4/5] sm:aspect-[4/3] lg:aspect-[16/10]"
                             >
@@ -78,7 +78,7 @@ export default function DeliveryProcessSection({
                                             muted
                                             loop
                                             playsInline
-                                            className={`h-full w-full object-cover ${step.mediaPositionClassName} opacity-50 transition-transform duration-[2s] group-hover:scale-105 group-hover:opacity-70`}
+                                            className={`h-full w-full object-cover ${step.mediaPositionClassName} opacity-50 sm:transition-transform sm:duration-[2s] sm:group-hover:scale-105 sm:group-hover:opacity-70`}
                                         />
                                     ) : (
                                         <Image

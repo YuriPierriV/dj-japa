@@ -8,6 +8,22 @@ type LeadPayload = {
   source?: string;
 };
 
+type TableConfig = {
+  table: string;
+  nameField: string;
+  dateField: string;
+};
+
+function resolveTable(source: string): TableConfig {
+  if (source.startsWith('debutante')) {
+    return { table: 'debutante_leads', nameField: 'debutante_name', dateField: 'event_date' };
+  }
+  if (source.startsWith('festa-corporativa')) {
+    return { table: 'corporate_leads', nameField: 'contact_name', dateField: 'event_date' };
+  }
+  return { table: 'wedding_leads', nameField: 'couple_name', dateField: 'wedding_date' };
+}
+
 function isValidLead(payload: LeadPayload) {
   return Boolean(
     payload.nome?.trim() &&
@@ -37,7 +53,10 @@ export async function POST(request: Request) {
     );
   }
 
-  const response = await fetch(`${supabaseUrl}/rest/v1/wedding_leads`, {
+  const source = payload.source?.trim() || 'vip_whatsapp_button';
+  const { table, nameField, dateField } = resolveTable(source);
+
+  const response = await fetch(`${supabaseUrl}/rest/v1/${table}`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -46,11 +65,11 @@ export async function POST(request: Request) {
       Prefer: 'return=minimal',
     },
     body: JSON.stringify({
-      couple_name: payload.nome?.trim(),
+      [nameField]: payload.nome?.trim(),
       phone: payload.telefone?.trim(),
       email: payload.email?.trim(),
-      wedding_date: payload.dataEvento,
-      source: payload.source?.trim() || 'vip_whatsapp_button',
+      [dateField]: payload.dataEvento,
+      source,
     }),
     cache: 'no-store',
   });

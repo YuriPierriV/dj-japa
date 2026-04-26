@@ -45,7 +45,8 @@ export default function SiteFooter({ description }: SiteFooterProps) {
             </h4>
             <nav className="flex flex-col gap-4 text-sm font-light">
               <Link href="/casamento" className="hover:text-wedding-gold transition-colors">Casamentos</Link>
-              <Link href="/15-anos" className="hover:text-wedding-gold transition-colors">15 Anos</Link>
+              <Link href="/debutante" className="hover:text-wedding-gold transition-colors">Debutante</Link>
+              <Link href="/festa-corporativa" className="hover:text-wedding-gold transition-colors">Eventos Corporativos</Link>
               <a href={`https://wa.me/${siteConfig.whatsappNumber}`} target="_blank" rel="noopener noreferrer" className="hover:text-wedding-gold transition-colors">WhatsApp Direto</a>
               <Link href="/privacidade" className="hover:text-wedding-gold transition-colors">Política de Privacidade</Link>
             </nav>

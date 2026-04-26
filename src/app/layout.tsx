@@ -18,6 +18,9 @@ const cormorant = Cormorant_Garamond({
   weight: ['400', '500', '600', '700'],
 });
 
+const googleVerification = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION;
+const facebookVerification = process.env.NEXT_PUBLIC_FACEBOOK_DOMAIN_VERIFICATION;
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.siteUrl),
   title: {
@@ -25,6 +28,7 @@ export const metadata: Metadata = {
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
+  keywords: siteConfig.keywords,
   alternates: {
     canonical: '/',
   },
@@ -32,6 +36,12 @@ export const metadata: Metadata = {
   authors: [{ name: siteConfig.name }],
   creator: siteConfig.name,
   publisher: siteConfig.name,
+  category: 'Entretenimento e Eventos',
+  formatDetection: {
+    telephone: true,
+    address: false,
+    email: false,
+  },
   robots: {
     index: true,
     follow: true,
@@ -42,6 +52,12 @@ export const metadata: Metadata = {
       'max-snippet': -1,
       'max-video-preview': -1,
     },
+  },
+  verification: {
+    google: googleVerification,
+    other: facebookVerification
+      ? { 'facebook-domain-verification': facebookVerification }
+      : undefined,
   },
   openGraph: {
     type: 'website',
@@ -55,7 +71,7 @@ export const metadata: Metadata = {
         url: siteConfig.ogImage,
         width: 1200,
         height: 630,
-        alt: `${siteConfig.name} em apresentacao ao vivo`,
+        alt: `${siteConfig.name} em apresentação ao vivo`,
       },
     ],
   },

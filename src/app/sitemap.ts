@@ -6,24 +6,38 @@ export default function sitemap(): MetadataRoute.Sitemap {
     return [];
   }
 
+  const lastModified = new Date();
+
   return [
     {
-      url: absoluteUrl('/casamento'),
-      lastModified: new Date(),
+      url: absoluteUrl('/'),
+      lastModified,
       changeFrequency: 'weekly',
       priority: 1,
     },
     {
-      url: absoluteUrl('/15-anos'),
-      lastModified: new Date(),
+      url: absoluteUrl('/casamento'),
+      lastModified,
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
+      url: absoluteUrl('/debutante'),
+      lastModified,
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
+      url: absoluteUrl('/festa-corporativa'),
+      lastModified,
       changeFrequency: 'weekly',
       priority: 0.9,
     },
     {
       url: absoluteUrl('/privacidade'),
-      lastModified: new Date(),
+      lastModified,
       changeFrequency: 'monthly',
-      priority: 0.4,
+      priority: 0.3,
     },
   ];
 }

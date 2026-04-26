@@ -28,7 +28,9 @@ export default function EventLandingPage({ content }: EventLandingPageProps) {
           imageSrc={content.hero.imageSrc}
           intro={content.hero.intro}
           phrases={content.hero.phrases}
+          secondaryCtaLabel={content.hero.secondaryCtaLabel}
           trackingPrefix={content.slug}
+          videoSrc={content.hero.videoSrc}
         />
         <DeliveryProcessSection
           highlight={content.process.highlight}

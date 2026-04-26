@@ -1,67 +1,125 @@
 {
-  "hero": {
-    "background": {
-      "location": "landing.hero.background",
-      "route": "/imagens/principal.jpg"
-    }
-  },
-  "about": {
-    "primary": {
-      "location": "landing.about.primary",
-      "route": "/imagens/japa1.jpg"
+  "casamento": {
+    "hero": "/imagens/principal.jpg",
+    "heroVideo": null,
+    "about": {
+      "primary": "/imagens/japa1.jpg",
+      "secondary": "/imagens/japa2.jpg"
     },
-    "secondary": {
-      "location": "landing.about.secondary",
-      "route": "/imagens/japa2.jpg"
-    }
-  },
-  "deliveryProcess": {
-    "alignment": {
-      "location": "landing.delivery-process.alignment",
-      "route": "/imagens/align.png"
-    },
-    "curation": {
-      "location": "landing.delivery-process.curation",
-      "route": "/imagens/entendimento.jpg"
-    },
-    "structure": {
-      "location": "landing.delivery-process.structure",
-      "route": "/videos/estrutura.mp4"
-    },
-    "execution": {
-      "location": "landing.delivery-process.execution",
-      "route": "/imagens/exec.png"
-    }
-  },
-  "storiesArchive": {
-    "items": [
-      {
-        "location": "landing.stories-archive.item-1",
-        "name": "Amanda & Lucas",
-        "text": "A pista ficou cheia a noite inteira. O repertório parecia feito sob medida para cada momento, fomos surpreendidos com a conexão que ele teve com a nossa pista.",
-        "mediaType": "video",
-        "mediaSrc": "/videos/casamento.mp4"
+    "process": {
+      "alignment": {
+        "type": "image",
+        "src": "/imagens/corp2.jpg"
       },
-      {
-        "location": "landing.stories-archive.item-2",
-        "name": "Mariana & Felipe",
-        "text": "Sensibilidade total para conduzir a energia da recepção. Nossa festa foi exatamente como sonhamos, tudo muito chique e sem uma única queda de animação.",
-        "mediaType": "video",
-        "mediaSrc": "/videos/vid2.mp4"
+      "curation": {
+        "type": "image",
+        "src": "/imagens/entendimento.jpg"
       },
-      {
-        "location": "landing.stories-archive.item-3",
-        "name": "Bruna & Caio",
-        "text": "Som cristalino, transições absurdamente perfeitas e um atendimento ultra próximo desde o primeiro contato. A entrega visual e sonora foi digna de cinema.",
-        "mediaType": "image",
-        "mediaSrc": "/imagens/japa1.jpg"
+      "structure": {
+        "type": "video",
+        "src": "/videos/estrutura.mp4"
+      },
+      "execution": {
+        "type": "image",
+        "src": "/imagens/exec.png"
       }
-    ]
+    },
+    "stories": [
+      {
+        "type": "video",
+        "src": "/videos/casamento.mp4"
+      },
+      {
+        "type": "video",
+        "src": "/videos/vid2.mp4"
+      },
+      {
+        "type": "video",
+        "src": "/videos/IMG_8726.MOV"
+      }
+    ],
+    "contact": "/imagens/principal.JPG"
   },
-  "contact": {
-    "background": {
-      "location": "landing.contact.background",
-      "route": "/imagens/principal.JPG"
-    }
+  "debutante": {
+    "hero": "/imagens/japafundi.jpg",
+    "heroVideo": "/videos/debutante-hero.mp4",
+    "about": {
+      "primary": "/imagens/fotoDJ.JPG",
+      "secondary": "/imagens/japa1.jpg"
+    },
+    "process": {
+      "alignment": {
+        "type": "image",
+        "src": "/imagens/debutante_usandomesa.jpg"
+      },
+      "curation": {
+        "type": "image",
+        "src": "/imagens/entendimento.jpg"
+      },
+      "structure": {
+        "type": "video",
+        "src": "/videos/estrutura.mp4"
+      },
+      "execution": {
+        "type": "image",
+        "src": "/imagens/debutante_fim.png"
+      }
+    },
+    "stories": [
+      {
+        "type": "video",
+        "src": "/videos/debutante3.mp4"
+      },
+      {
+        "type": "video",
+        "src": "/videos/debutante2.mp4"
+      },
+      {
+        "type": "image",
+        "src": "/imagens/japafundi.jpg"
+      }
+    ],
+    "contact": "/imagens/japafundi.jpg"
+  },
+  "festa-corporativa": {
+    "hero": "/imagens/corpfundo.jpg",
+    "heroVideo": null,
+    "about": {
+      "primary": "/imagens/japa1.jpg",
+      "secondary": "/imagens/japa2.jpg"
+    },
+    "process": {
+      "alignment": {
+        "type": "image",
+        "src": "/imagens/corp2.jpg"
+      },
+      "curation": {
+        "type": "image",
+        "src": "/imagens/entendimento.jpg"
+      },
+      "structure": {
+        "type": "video",
+        "src": "/videos/estrutura.mp4"
+      },
+      "execution": {
+        "type": "image",
+        "src": "/imagens/exec.png"
+      }
+    },
+    "stories": [
+      {
+        "type": "video",
+        "src": "/videos/casamento.mp4"
+      },
+      {
+        "type": "video",
+        "src": "/videos/vid2.mp4"
+      },
+      {
+        "type": "image",
+        "src": "/imagens/japa1.jpg"
+      }
+    ],
+    "contact": "/imagens/principal.JPG"
   }
 }
