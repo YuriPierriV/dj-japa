@@ -1,8 +1,8 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { X, RefreshCw, Film, Image as ImageIcon, LogOut } from 'lucide-react';
+import { X, RefreshCw, Film, Image as ImageIcon, LogOut, Upload, Loader2 } from 'lucide-react';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -37,37 +37,98 @@ function fileName(src: string) {
   return src.split('/').pop() ?? src;
 }
 
+function acceptAttr(filterType: 'image' | 'video' | null) {
+  if (filterType === 'image') return 'image/jpeg,image/png,image/webp,image/gif';
+  if (filterType === 'video') return 'video/mp4,video/webm,video/quicktime';
+  return 'image/jpeg,image/png,image/webp,image/gif,video/mp4,video/webm,video/quicktime';
+}
+
 // ─── File Picker Modal ────────────────────────────────────────────────────────
 
 function FilePicker({
   files,
   pickerState,
   onClose,
+  onUpload,
+  uploading,
+  uploadError,
 }: {
   files: FileOption[];
   pickerState: PickerState;
   onClose: () => void;
+  onUpload: (file: File) => Promise<FileOption | null>;
+  uploading: boolean;
+  uploadError: string | null;
 }) {
   const [tab, setTab] = useState<'all' | 'image' | 'video'>('all');
+  const inputRef = useRef<HTMLInputElement>(null);
 
   if (!pickerState) return null;
 
   const filterType = pickerState.filterType;
   const shown = files.filter((f) => {
-    if (filterType) return f.type === filterType; // forced filter
+    if (filterType) return f.type === filterType;
     if (tab === 'all') return true;
     return f.type === tab;
   });
+
+  async function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    e.target.value = '';
+    const result = await onUpload(file);
+    if (result && pickerState) {
+      pickerState.onSelect(result);
+      onClose();
+    }
+  }
 
   return (
     <div className="fixed inset-0 z-50 flex flex-col bg-zinc-950">
       {/* Modal header */}
       <div className="flex items-center justify-between border-b border-zinc-800 px-4 py-3 shrink-0">
         <span className="text-sm font-semibold text-zinc-100">Selecionar arquivo</span>
-        <button type="button" onClick={onClose} className="text-zinc-400 hover:text-white p-1">
-          <X className="w-5 h-5" />
-        </button>
+        <div className="flex items-center gap-2">
+          <input
+            ref={inputRef}
+            type="file"
+            accept={acceptAttr(filterType)}
+            className="hidden"
+            onChange={handleFileChange}
+          />
+          <button
+            type="button"
+            onClick={() => inputRef.current?.click()}
+            disabled={uploading}
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-amber-500 hover:bg-amber-400 disabled:opacity-50 text-black text-xs font-bold transition-colors"
+          >
+            {uploading ? (
+              <Loader2 className="w-3.5 h-3.5 animate-spin" />
+            ) : (
+              <Upload className="w-3.5 h-3.5" />
+            )}
+            {uploading ? 'Enviando…' : 'Upload'}
+          </button>
+          <button type="button" onClick={onClose} className="text-zinc-400 hover:text-white p-1">
+            <X className="w-5 h-5" />
+          </button>
+        </div>
       </div>
+
+      {/* Upload error */}
+      {uploadError && (
+        <div className="px-4 py-2 bg-red-950 border-b border-red-800 text-red-300 text-xs shrink-0">
+          {uploadError}
+        </div>
+      )}
+
+      {/* Upload overlay */}
+      {uploading && (
+        <div className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-3 bg-zinc-950/80">
+          <Loader2 className="w-8 h-8 text-amber-400 animate-spin" />
+          <p className="text-sm text-zinc-300">Enviando arquivo…</p>
+        </div>
+      )}
 
       {/* Type tabs — only show if no forced filter */}
       {!filterType && (
@@ -123,8 +184,17 @@ function FilePicker({
             </button>
           ))}
         </div>
-        {shown.length === 0 && (
-          <div className="flex flex-col items-center justify-center h-40 text-zinc-600 text-sm">Nenhum arquivo encontrado</div>
+        {shown.length === 0 && !uploading && (
+          <div className="flex flex-col items-center justify-center h-40 text-zinc-600 text-sm gap-2">
+            <p>Nenhum arquivo encontrado</p>
+            <button
+              type="button"
+              onClick={() => inputRef.current?.click()}
+              className="flex items-center gap-1.5 text-amber-500 hover:text-amber-400 text-xs transition-colors"
+            >
+              <Upload className="w-3.5 h-3.5" /> Fazer upload
+            </button>
+          </div>
         )}
       </div>
     </div>
@@ -255,6 +325,8 @@ export default function AdminClient({ initialData }: { initialData: ImagesData }
   const [saved, setSaved] = useState(false);
   const [dirty, setDirty] = useState(false);
   const [activePreview, setActivePreview] = useState<'hero' | 'processo' | 'momentos'>('hero');
+  const [uploading, setUploading] = useState(false);
+  const [uploadError, setUploadError] = useState<string | null>(null);
 
   useEffect(() => {
     fetch('/api/admin/list-files').then((r) => r.json()).then(setFiles).catch(() => {});
@@ -269,7 +341,34 @@ export default function AdminClient({ initialData }: { initialData: ImagesData }
   }
 
   function openPicker(filterType: 'image' | 'video' | null, onSelect: (f: FileOption) => void) {
+    setUploadError(null);
     setPickerState({ filterType, onSelect });
+  }
+
+  async function handleUpload(file: File): Promise<FileOption | null> {
+    setUploading(true);
+    setUploadError(null);
+    const form = new FormData();
+    form.append('file', file);
+    try {
+      const res = await fetch('/api/admin/upload', { method: 'POST', body: form });
+      const json = await res.json();
+      if (!res.ok) {
+        setUploadError(json.error ?? 'Erro ao fazer upload.');
+        return null;
+      }
+      const newFile: FileOption = { src: json.src, type: json.type, name: json.name };
+      setFiles((prev) => {
+        const exists = prev.some((f) => f.src === newFile.src);
+        return exists ? prev.map((f) => f.src === newFile.src ? newFile : f) : [newFile, ...prev];
+      });
+      return newFile;
+    } catch {
+      setUploadError('Erro de conexão. Tente novamente.');
+      return null;
+    } finally {
+      setUploading(false);
+    }
   }
 
   async function logout() {
@@ -490,7 +589,14 @@ export default function AdminClient({ initialData }: { initialData: ImagesData }
       </div>
 
       {/* File Picker */}
-      <FilePicker files={files} pickerState={pickerState} onClose={() => setPickerState(null)} />
+      <FilePicker
+        files={files}
+        pickerState={pickerState}
+        onClose={() => setPickerState(null)}
+        onUpload={handleUpload}
+        uploading={uploading}
+        uploadError={uploadError}
+      />
     </div>
   );
 }
